@@ -15,7 +15,7 @@ For linux machines:
 - Install the bundler gem:
      $ gem install bundler
 
-- Navigate to the setup folder and install all of the required gems defined in the gemfile:
+- Install all of the required gems defined in the gemfile:
      $ bundle install
 
 
