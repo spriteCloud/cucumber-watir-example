@@ -11,8 +11,8 @@ Feature: Example Feature
   Scenario: example01 - Navigation website
     When I click on link "Home"
     Then I should see text "Website Testing Services, Consultancy and Solutions."
-    And I use value "test@testing.com" for field "email"
-    And I click on button "Contact me"
+    And I use value "This is a message" for field "message"
+    Then field "message" has value "This is a message"
     And I click on link "Services"
     Then I should see text "spriteCloud Quality Assurance Services"
 

@@ -67,8 +67,8 @@ Then /^field "([^"]*)" has value "([^"]*)"$/ do |arg1, arg2|
   text_fields.each do |text_field|
     if text_field.html.include? arg1
       text_field_found = true
-      if !text_field.text.include? arg2
-        raise "Text field '#{arg1}' has value ''#{text_field.text}''"
+      if !text_field.value.include? arg2
+        raise "Text field '#{arg1}' has value '#{text_field.value}'"
       end
     end
   end
