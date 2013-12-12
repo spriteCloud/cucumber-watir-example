@@ -1,0 +1,19 @@
+################################################################################################
+# Created by spriteCloud B.V. (R)
+# For info and questions: support@spritecloud.com
+#
+# This file defines custom cucumber profiles which can be called with command '-p'
+
+<% timestamp = Time.now.strftime("%Y%m%d_%H%M") %>
+
+##########################################################################
+# Type of testruns
+default: -x -f pretty
+html_report: -x -f pretty -f html --out=results/<%=timestamp%>_report.html
+
+##########################################################################
+# Supported browsers (default = firefox)
+ff: BROWSER=firefox
+chrome: BROWSER=chrome
+ie: BROWSER=ie
+safari: BROWSER=safari

@@ -1,0 +1,21 @@
+################################################################################################
+# Created by spriteCloud B.V. (R)
+# For info and questions: support@spritecloud.com
+#
+# Config file for the test automation
+# When a config_local.yml exists, that will then be loaded instead of this default config file
+
+##########################################################################
+# Set the global variables
+screenshots_dir: screenshots              # where to save the screenshots
+step_pause_time: 1                        # Waiting time in seconds defined after a step completes
+screenshot_on_failed_scenario: true       # make a screenshot after a scenario fails
+
+##########################################################################
+# List of error strings. Step will fail if one of these strings is detected.
+error_strings:
+  [
+  '500 Internal Server Error',
+  '404 File Not Found',
+  '404 Not Found'
+]
