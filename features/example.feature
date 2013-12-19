@@ -3,6 +3,10 @@ Feature: Example Feature
   When I want to learn how to make test cases
   As a user of the test automation tool
   I want to run and adjust the tests below
+  
+  Acceptance Criteria:
+  
+  	- Some new acceptance criteria here
 
   Background: Steps before every scenario
     Given I navigate to url "http://www.spritecloud.com"
