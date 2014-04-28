@@ -13,21 +13,26 @@ Feature: Example Feature
 
   @example01
   Scenario: example01 - Navigation website
-    When I click on link "Home"
-    Then I should see text "Website Testing Services, Consultancy and Solutions."
+    When I click on link "testing"
+    Then I should see text "Test your software not your reputation"
+    And I click on link "contact"
     And I use value "This is a message" for field "message"
-    Then field "message" has value "This is a message"
-    And I click on link "Services"
-    Then I should see text "spriteCloud Quality Assurance Services"
+    Then field "your-message" has value "This is a message"
+    And I click on link "industry"
+    Then I should see text "Enterprise"
+    Then I should see text "Brands"
+    Then I should see text "Digital Agencies"
+    Then I should see text "eCommerce"
+    Then I should see text "Mobile"
 
   @example02
   Scenario Outline: example02 - Navigation mainmenu from table
     When I click on link "<link_name>"
     And I should see text "<text>"
   Scenarios: Values
-    | link_name    | text                                                 |
-    | Home         | Website Testing Services, Consultancy and Solutions. |
-    | Services     | spriteCloud Quality Assurance Services               |
+    | link_name    | text                                    |
+    | testing      | Test your software not your reputation  |
+    | industry     | Services for digital agencies           |
 
   @example03
   Scenario: example03 - See a 404 Error
