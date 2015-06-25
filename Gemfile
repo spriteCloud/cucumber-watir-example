@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+
 # Add following two lines to your ~/.gemrc or /etc/gemrc:
 # install: --no-rdoc --no-ri
 # update:  --no-rdoc --no-ri
@@ -10,20 +11,30 @@ gem 'gherkin'
 gem 'xml-simple'
 gem 'mechanize'
 
-# Install all the webdriver gems and cucumber
-gem 'watir-webdriver'
-gem 'watir-webdriver-performance'
-gem 'cucumber'
-# For spriteCloud portal support, install the local spriteCloud gem. Get it from https://portal.spritecloud.com/api
-#gem 'cucumber-spriteCloud', '0.9.0.6', :path => '.'
+# Debuggers
+platforms :ruby_18, :ruby_19 do
+  gem 'debugger'
+end
+platforms :ruby_20, :ruby_21 do
+  gem 'byebug'
+  gem 'rb-readline'
+end
 
-#Windows specific
+# Windows specific
 platforms :mswin, :mingw do
   gem 'win32console'
   gem 'term-ansicolor'
 end
 
-#ruby version specific gems
-platforms :ruby_19 do
-  gem 'debugger'
-end
+
+# Install all the webdriver gems and cucumber
+gem 'watir-webdriver'
+gem 'watir-webdriver-performance'
+gem 'watir-scroll'
+gem 'cucumber', "1.3.19"
+
+# Lock selenium-webdriver into a known supported version.
+gem 'selenium-webdriver', '2.46.2'
+
+# LapisLazul itself
+gem 'lapis_lazuli', "0.7.0"
