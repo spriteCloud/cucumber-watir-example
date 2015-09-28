@@ -15,9 +15,6 @@ Feature: Example Feature
   Scenario: example01 - Navigation website
     When I click on link "testing"
     Then I should see text "Test your software not your reputation"
-    And I click on link "contact"
-    And I use value "This is a message" for field "message"
-    Then field "your-message" has value "This is a message"
     And I click on link "industry"
     Then I should see text "Enterprise"
     Then I should see text "Brands"

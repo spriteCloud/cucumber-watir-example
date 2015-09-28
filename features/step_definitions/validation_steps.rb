@@ -25,7 +25,7 @@ end
 
 Then /^I should see text "([^"]*)"$/ do |arg1|
   match_found = /#{arg1}/.match($BROWSER.html)
-  raise "Text '#{arg1}' found on page" unless match_found
+  raise "Text '#{arg1}' NOT found on page" unless match_found
 end
 
 
