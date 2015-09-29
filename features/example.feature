@@ -14,7 +14,7 @@ Feature: Example Feature
   @example01
   Scenario: example01 - Navigation website
     When I click on link "testing"
-    Then I should see text "Test your software not your reputation"
+    Then I should see text "Test your software, not your reputation"
     And I click on link "industry"
     Then I should see text "Enterprise"
     Then I should see text "Brands"
