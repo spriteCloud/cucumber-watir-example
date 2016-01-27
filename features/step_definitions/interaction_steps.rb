@@ -3,14 +3,14 @@
 
 Given /^I navigate to url "([^"]*)"$/ do |arg1|
   if arg1 =~ /^#{URI::regexp}$/
-   $BROWSER.goto arg1
+   browser.goto arg1
   else
     raise "Not a valid URL: #{arg1}"
 end
 end
 
 Given /^I click on the back button of the browser$/ do
-  $BROWSER.back
+  browser.back
 end
 
 When /^I wait for (\d+) seconds$/ do |arg1|
@@ -22,7 +22,7 @@ end
 
 When /^I click on link "([^"]*)"$/ do |arg1|
   begin
-    $BROWSER.a(:text => /#{arg1}/i).click
+    browser.a(:text => /#{arg1}/i).click
   rescue
     raise "Link '#{arg1}' not found"
   end
@@ -33,10 +33,10 @@ end
 
 Then /^I click on button "([^\"]*)"$/ do |arg1|
   #HTML elements 'button' and 'input' are most used for a button
-  if $BROWSER.button(:text => /#{arg1}/i).exist?
-    $BROWSER.button(:text => /#{arg1}/i).click
-  elsif $BROWSER.input(:value => /#{arg1}/i).exist?
-    $BROWSER.input(:value => /#{arg1}/i).click
+  if browser.button(:text => /#{arg1}/i).exist?
+    browser.button(:text => /#{arg1}/i).click
+  elsif browser.input(:value => /#{arg1}/i).exist?
+    browser.input(:value => /#{arg1}/i).click
   else
     raise "Button '#{arg1}' not found"
   end
@@ -47,7 +47,7 @@ end
 
 Then /^I use value "([^"]*)" for field "([^"]*)"$/ do |arg1, arg2|
   text_field_found = false
-  text_fields = $BROWSER.text_fields
+  text_fields = browser.text_fields
   text_fields.each do |text_field|
     if text_field.html.include? arg2
       text_field_found = true
@@ -63,7 +63,7 @@ end
 
 Given /^I set checkbox "(.*?)"$/ do |arg1|
   checkbox_found = false
-  checkboxes = $BROWSER.checkboxes
+  checkboxes = browser.checkboxes
   checkboxes.each do |checkbox|
     #usually parent contains the label information
     if checkbox.html.include? arg1
@@ -76,7 +76,7 @@ end
 
 Given /^I clear checkbox "(.*?)"$/ do |arg1|
   checkbox_found = false
-  checkboxes = $BROWSER.checkboxes
+  checkboxes = browser.checkboxes
   checkboxes.each do |checkbox|
     #usually parent contains the label information
     if checkbox.html.include? arg1

@@ -3,7 +3,7 @@
 
 Then /^I should see link "([^"]*)"$/ do |arg1|
   link_visible = false
-  links = $BROWSER.as(:text => /#{arg1}/i)
+  links = browser.as(:text => /#{arg1}/i)
   links.each do |link|
     if link.visible?
       link_visible = true
@@ -15,7 +15,7 @@ Then /^I should see link "([^"]*)"$/ do |arg1|
 end
 
 Then /^I should not see link "([^"]*)"$/ do |arg1|
-	if $BROWSER.link(:text => arg1).exist? and $BROWSER.link(:text => arg1).visible?
+	if browser.link(:text => arg1).exist? and browser.link(:text => arg1).visible?
     raise "Link ''#{arg1}'' is visible"
   end
 end
@@ -24,13 +24,13 @@ end
 # Text validators
 
 Then /^I should see text "([^"]*)"$/ do |arg1|
-  match_found = /#{arg1}/.match($BROWSER.html)
-  raise "Text '#{arg1}' NOT found on page" unless match_found
+  match_found = /#{arg1}/.match(browser.html)
+  raise "Text '#{arg1}' NOT found on page #{browser.url}" unless match_found
 end
 
 
 Then /^I should not see text "([^"]*)"$/ do |arg1|
-  match_found = /#{arg1}/.match($BROWSER.html)
+  match_found = /#{arg1}/.match(browser.html)
   raise "Text '#{arg1}' found on page" if match_found
 end
 
@@ -41,7 +41,7 @@ end
 Then /^I take a screenshot$/ do
   begin
     filename = File.join($SCREENSHOTS_DIR, $scenario_name + '.jpg')
-    $BROWSER.driver.save_screenshot(filename)
+    browser.driver.save_screenshot(filename)
     $log.debug "Screenshot saved: #{filename}"
   rescue Exception => e
     puts "Failed to save screenshot. Error message: '#{e.message}'"
@@ -50,9 +50,9 @@ Then /^I take a screenshot$/ do
 end
 
 Then /^I should see image from source "([^"]*)"$/ do |arg1|
-  if !$BROWSER.img(:src => /#{arg1}/).exist?
+  if !browser.img(:src => /#{arg1}/).exist?
     raise "Image '#{arg1}' not found"
-  elsif !$BROWSER.img(:src => /#{arg1}/).visible?
+  elsif !browser.img(:src => /#{arg1}/).visible?
     handle_element_not_found('visible image', arg1)
   end
 end
@@ -63,7 +63,7 @@ end
 
 Then /^field "([^"]*)" has value "([^"]*)"$/ do |arg1, arg2|
   text_field_found = false
-  text_fields = $BROWSER.text_fields
+  text_fields = browser.text_fields
   text_fields.each do |text_field|
     if text_field.html.include? arg1
       text_field_found = true
@@ -72,7 +72,7 @@ Then /^field "([^"]*)" has value "([^"]*)"$/ do |arg1, arg2|
       end
     end
   end
-  raise "Text field '#{arg1}' not found" unless text_field_found
+  raise "Text field '#{arg1}' not found on #{browser.url}" unless text_field_found
 end
 
 ################################################################################
@@ -80,7 +80,7 @@ end
 
 Given /^checkbox "(.*?)" is set$/ do |arg1|
   checkbox_found = false
-  checkboxes = $BROWSER.checkboxes
+  checkboxes = browser.checkboxes
   checkboxes.each do |checkbox|
     #usually parent contains the label information
     if checkbox.html.include? arg1
@@ -93,7 +93,7 @@ end
 
 Given /^checkbox "(.*?)" is cleared$/ do |arg1|
   checkbox_found = false
-  checkboxes = $BROWSER.checkboxes
+  checkboxes = browser.checkboxes
   checkboxes.each do |checkbox|
     #usually parent contains the label information
     if checkbox.html.include? arg1

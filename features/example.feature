@@ -28,7 +28,7 @@ Feature: Example Feature
     And I should see text "<text>"
   Scenarios: Values
     | link_name    | text                                    |
-    | testing      | Test your software not your reputation  |
+    | testing      | Test your software, not your reputation  |
     | industry     | Services for digital agencies           |
 
   @example03

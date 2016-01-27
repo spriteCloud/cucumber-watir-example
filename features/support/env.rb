@@ -9,6 +9,8 @@ require "watir-webdriver/extensions/alerts"
 require 'logger'
 require 'uri'
 require 'time'
+require 'lapis_lazuli'
+require 'lapis_lazuli/cucumber'
 
 ###################################################################################
 # Start the logger
@@ -29,58 +31,41 @@ $T_START = Time.now
 ###################################################################################
 # Launch the browser. Can be firefox, chrome, safari or ie. Defaults to firefox
 # Define what browser to use from cucumber yml or from the command line using BROWSER=<..>.
-$BROWSER = Watir::Browser.new (ENV['BROWSER'] || 'firefox').downcase
+#browser = Watir::Browser.new (ENV['BROWSER'] || 'firefox').downcase
+
+LapisLazuli::WorldModule::Config.config_file = "config/config.yml"
+World(LapisLazuli)
 
 # Returns the error as a string if one is detected
 # Here you can also insert custom checks. E.g detect if there is any error box and pass the content
 def error_on_page?
   begin
-    page_text = $BROWSER.html
+    page_text = browser.html
     CONFIGS['error_strings'].each do |error|
       if page_text.scan(error)[0]
         return page_text.scan(error)[0]
       end
     end
   rescue
-   $log.debug "Cannot read html for page #{$BROWSER.url}"
+   $log.debug "Cannot read html for page #{browser.url}"
   end
   return false
 end
 
 # Actions that will happen before every scenario
-Before do |scenario|
-  # $scenario_name is a unique (filename compatible) scenario identifier. Can be used as screenshot filename.
-  # All non alphanumeric characters are replaced and whitespaces are replaced with underscores
-  $scenario_name = Time.now.strftime('%y%m%d_%H%M%S') + "_" + scenario.name.gsub(/^.*(\\|\/)/, '').gsub(/[^\w\.\-]/, '_').squeeze('_').chomp('_')
+LapisLazuli.Before do
+  # things that should be run before every run
 end
 
 # This is executed after every step.
-AfterStep do |scenario|
+LapisLazuli.After do
   #Check if one of the error strings from the config file is detected on the page
   errors_on_page = error_on_page?
   if errors_on_page
-    raise "'#{errors_on_page}' found on <a href='#{$BROWSER.url}' target='_blank'>page</a>"
+    raise "'#{errors_on_page}' found on <a href='#{browser.url}' target='_blank'>page</a>"
   end
 
   #Wait the required time
   sleep CONFIGS['step_pause_time'] rescue sleep 0
 end
 
-# This is executed after every scenario.
-After do |scenario|
-  if scenario.failed? and CONFIGS['screenshot_on_failed_scenario']
-    begin
-      filename = File.join(CONFIGS['screenshots_dir'], $scenario_name + '.jpg')
-      $BROWSER.driver.save_screenshot(filename)
-      $log.debug "Screenshot saved: #{filename}"
-    rescue Exception => e
-      puts "Failed to save screenshot. Error message: '#{e.message}'"
-      $log.debug "Failed to save screenshot. Error message: '#{e.message}'"
-    end
-  end
-end
-
-# Closing the browser after the test.
-at_exit do
-  $BROWSER.close
-end
