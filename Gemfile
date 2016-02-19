@@ -29,12 +29,11 @@ end
 
 # Install all the webdriver gems and cucumber
 gem 'watir-webdriver'
-gem 'watir-webdriver-performance'
 gem 'watir-scroll'
-gem 'cucumber', "1.3.19"
+gem 'cucumber'
 
 # Lock selenium-webdriver into a known supported version.
-gem 'selenium-webdriver', '2.46.2'
+gem 'selenium-webdriver'
 
 # LapisLazul itself
-gem 'lapis_lazuli', "0.7.0"
+gem 'lapis_lazuli'
