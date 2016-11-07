@@ -35,3 +35,10 @@ Feature: Example Feature
   Scenario: example03 - See a 404 Error
     Given I navigate to url "http://spritecloud.com"
     Then I should see text "This is an example of a failed scenario"
+
+  @example04
+  Scenario: example03 - Use datatables
+    Given I navigate to url "http://spritecloud.com"
+    Then the page should contain elements
+      | title      | slogan                                  | footer                   |
+      | spriteCloud| Test your software, not your reputation | Generaal Vetterstraat 72 |
