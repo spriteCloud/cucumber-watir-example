@@ -33,7 +33,7 @@ gem 'watir-scroll'
 gem 'cucumber'
 
 # Lock selenium-webdriver into a known supported version.
-gem 'selenium-webdriver'
+gem 'selenium-webdriver', '2.53.4'
 
 # LapisLazul itself
 gem 'lapis_lazuli'
