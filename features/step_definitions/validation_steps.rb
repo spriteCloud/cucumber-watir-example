@@ -103,3 +103,19 @@ Given /^checkbox "(.*?)" is cleared$/ do |arg1|
   end
   raise "Checkbox '#{arg1}' not found" unless checkbox_found
 end
+
+
+################################################################################
+# Datatable step example
+
+Then(/^the page should contain elements$/) do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  data = table.transpose.raw
+
+  data.each do |element, value|
+    #Include the check here. For example purposes we only check if the content appears on the page
+    raise "element: #{element} (#{value}) not found on page." unless browser.html.include? value
+  end
+
+  browser.take_screenshot
+end
