@@ -57,12 +57,14 @@ LapisLazuli.Before do
   # things that should be run before every run
 end
 
-# This is executed after every step.
+# This is executed after every scenario.
 LapisLazuli.After do
+  browser.take_screenshot
+
   #Check if one of the error strings from the config file is detected on the page
   errors_on_page = error_on_page?
   if errors_on_page
-    raise "'#{errors_on_page}' found on <a href='#{browser.url}' target='_blank'>page</a>"
+    error "'#{errors_on_page}' found on <a href='#{browser.url}' target='_blank'>page</a>"
   end
 
   #Wait the required time

@@ -28,7 +28,7 @@ Feature: Example Feature
     And I should see text "<text>"
   Scenarios: Values
     | link_name    | text                                    |
-    | testing      | Test your software, not your reputation  |
+    | testing      | Test your software, not your reputation |
     | industry     | Services for digital agencies           |
 
   @example03
@@ -37,7 +37,7 @@ Feature: Example Feature
     Then I should see text "This is an example of a failed scenario"
 
   @example04
-  Scenario: example03 - Use datatables
+  Scenario: example04 - Use datatables
     Given I navigate to url "http://spritecloud.com"
     Then the page should contain elements
       | title      | slogan                                  | footer                   |
