@@ -5,16 +5,6 @@ source 'http://rubygems.org'
 # install: --no-rdoc --no-ri
 # update:  --no-rdoc --no-ri
 
-# Install helper libraries
-gem 'rspec'
-gem 'gherkin'
-gem 'xml-simple'
-gem 'mechanize'
-
-# Debuggers
-platforms :ruby_18, :ruby_19 do
-  gem 'debugger'
-end
 platforms :ruby_20, :ruby_21 do
   gem 'byebug'
   gem 'rb-readline'
@@ -28,12 +18,10 @@ end
 
 
 # Install all the webdriver gems and cucumber
-gem 'watir-webdriver'
-gem 'watir-scroll'
-gem 'cucumber'
-
 # Lock selenium-webdriver into a known supported version.
-gem 'selenium-webdriver', '2.53.4'
+gem 'cucumber'
+gem 'selenium-webdriver'
+gem 'watir'
 
 # LapisLazul itself
 gem 'lapis_lazuli'
