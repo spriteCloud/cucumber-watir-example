@@ -4,8 +4,6 @@
 ################################################################################################
 require 'rubygems'
 require 'selenium-webdriver'
-require 'watir-webdriver'
-require "watir-webdriver/extensions/alerts"
 require 'logger'
 require 'uri'
 require 'time'
