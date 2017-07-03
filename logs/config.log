@@ -1,0 +1,18 @@
+Logging to './logs/config.log' initialized with level INFO.
+Logging to './logs/config.log' initialized with level INFO.
+D, [2017-07-03T10:49:09+0200 #9216] config.log: Creating metadata storage
+I, [2017-07-03T10:49:09+0200 #9216] config.log: Starting Scenario: features_example.feature_15-Example_Feature-example01_-_Navigation_website
+D, [2017-07-03T10:49:19+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example01_-_Navigation_website.png
+I, [2017-07-03T10:49:21+0200 #9216] config.log: Starting Scenario: features_example.feature_31-Example_Feature-example02_-_Navigation_mainmenu_from_table-Values-testing_Test_your_software_not_your_reputation
+D, [2017-07-03T10:49:25+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example02_-_Navigation_mainmenu_from_table_Values_1_.png
+I, [2017-07-03T10:49:27+0200 #9216] config.log: Starting Scenario: features_example.feature_32-Example_Feature-example02_-_Navigation_mainmenu_from_table-Values-industry_Services_for_digital_agencies
+D, [2017-07-03T10:49:31+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example02_-_Navigation_mainmenu_from_table_Values_2_.png
+I, [2017-07-03T10:49:33+0200 #9216] config.log: Starting Scenario: features_example.feature_35-Example_Feature-example03_-_See_a_404_Error
+D, [2017-07-03T10:49:37+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example03_-_See_a_404_Error.png
+D, [2017-07-03T10:49:39+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example03_-_See_a_404_Error.png
+I, [2017-07-03T10:49:39+0200 #9216] config.log: Starting Scenario: features_example.feature_40-Example_Feature-example04_-_Use_datatables
+D, [2017-07-03T10:49:42+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example04_-_Use_datatables.png
+D, [2017-07-03T10:49:42+0200 #9216] config.log: Screenshot saved: ./screenshots/170703_104919_example04_-_Use_datatables.png
+D, [2017-07-03T10:49:44+0200 #9216] config.log: Closing all browsers
+D, [2017-07-03T10:49:44+0200 #9216] config.log: Closing browser after exit event trigger: #<Watir::Browser:0x007ff6e9992f90>
+D, [2017-07-03T10:49:45+0200 #9216] config.log: Writing storage to: ./storage/metadata.json
